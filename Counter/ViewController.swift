@@ -10,20 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let dateFormatter = DateFormatter()
+    private let dateFormatter = DateFormatter()
     
     private var counter = 0
     
-    @IBOutlet weak var counterButton: UIButton!
-    @IBOutlet weak var counterView: UILabel!
-    @IBOutlet weak var counterHistoryView: UITextView!
+    @IBOutlet private weak var counterButton: UIButton!
+    @IBOutlet private weak var counterView: UILabel!
+    @IBOutlet private weak var counterHistoryView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
     
         dateFormatter.dateFormat = "dd.MM.yy в HH:mm:ss"
     }
     
-    @IBAction func buttonPlusDidTap() {
+    @IBAction private func buttonPlusDidTap() {
         if counter < Int.max {
             counter+=1
             counterHistoryView.text.append("\n\(dateFormatter.string(from: Date())): значение изменено на +1")
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         counterView.text = "Значение счётчика: \(counter)"
     }
     
-    @IBAction func buttinMinusDidTap() {
+    @IBAction private func buttonMinusDidTap() {
         if counter > 0 {
             counter-=1
             counterHistoryView.text.append("\n\(dateFormatter.string(from: Date())): значение изменено на -1")
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         counterView.text = "Значение счётчика: \(counter)"
     }
 
-    @IBAction func buttonResetDidTap() {
+    @IBAction private func buttonResetDidTap() {
         counter = 0
         counterHistoryView.text.append("\n\(dateFormatter.string(from: Date())): значение сброшено")
         counterView.text = "Значение счётчика: \(counter)"
